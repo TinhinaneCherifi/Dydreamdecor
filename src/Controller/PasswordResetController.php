@@ -56,8 +56,7 @@ class PasswordResetController extends AbstractController
                 $this ->addFlash('notice', 'Un email contenant un lien de réinitialisation vient de vous être envoyé. Consultez votre boite mail.');        
             }else{
                 $this ->addFlash('notice', 'Adresse inconnue.');
-            } 
-            dd($url);   
+            }  
         }
         return $this->render('password_reset/forgotten.html.twig');
     }
