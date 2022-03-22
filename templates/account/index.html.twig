@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte - D-Day Decor{% endblock %}
+
+{% block content %}
+    <h1 class="text-center">Mon compte</h1>
+    <hr>
+    Bienvenue {{ app.user.firstname }} !
+   <br>
+   <br>
+   {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('admin') }}">Acceder au backoffice</a><br>
+        <a href="{{ path('account_password') }}">Modifier mon mot de passe</a><br>
+   {% elseif is_granted('ROLE_USER') %}
+        <a href="{{ path('account_address') }}">Gérer mes adresses</a><br>
+        <a href="{{ path('account_order_index') }}">Afficher mes commandes</a><br>
+        <a href="{{ path('account_password') }}">Modifier mon mot de passe</a><br>
+   {% endif %}
+   <br>
+{% endblock %}

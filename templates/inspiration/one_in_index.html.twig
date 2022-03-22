@@ -1,0 +1,6 @@
+<div class="product text-justify-left">
+    <a href="{{ path('inspiration', {'slug' : inspiration.slug}) }}"><img src="/uploads/inspiration_images/{{ inspiration.image }}" alt="{{ inspiration.alt }}" class="img-fluid bd-placeholder-img rounded"></a>
+    <h5 class="product-title">{{ inspiration.title }}</h5>
+    <h6 class="inspiration-subtitle">{{ inspiration.subtitle }}</h6>
+    <p class="product-description text-align-justify-center">{{ inspiration.description|u.truncate(100, '...', false) }}</p>
+</div>

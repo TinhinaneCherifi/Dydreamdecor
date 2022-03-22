@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-5">
+            <img src="/uploads/item_images/{{ item.image }}" alt="{{ item.alt }}" class="img-fluid">
+        </div>
+        <div class="col-md-7 my-auto">
+            <div class="product text-center">
+                <h5 class="product-title">{{ item.name }}</h5>
+                <span class="product-show-price">{{ (item.price / 100)|number_format(2, ',','.') }} €</span>
+                <hr>
+                <p class="product-description text-align-justify-center">{{ item.description }}</p>
+                <hr>
+                <a href="{{ path('add_to_cart', {'id': item.id}) }}" class="btn btn-secondary">Ajouter au panier</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <h4>Inspirations utilisant cet article</h4>
+    <div class="row">
+        {% for inspiration in item.inspirations %}
+            <div class="col-md-3">
+                {% include 'inspiration/one_in_index.html.twig' %}
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

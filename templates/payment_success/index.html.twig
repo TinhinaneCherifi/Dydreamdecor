@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande validée - Dydream Decor{% endblock %}
+
+{% block content %}
+    <h2>Paiement accepté</h2>
+    <hr>
+    <br>
+    <p>
+        <strong>{{ order.user.fullName }}</strong>, votre commande est validée !
+        <br>
+        Merci de nous avoir fait confiance.
+        <br>
+        Une confirmation vient de vous être envoyée à votre adresse <strong>{{ order.user.email }}</strong>
+        <br>
+        <br>
+        Votre commande numéro <strong>{{ order.ref }}</strong>, sera livrée par <strong>{{ order.carrierName }}</strong> à l'adresse
+        <br>
+        <strong>{{ order.deliveryAddress|raw }}</strong>
+        <br>
+        <br>
+        Accedez au suivi de votre commande depuis votre <a href="{{ path('account') }}">espace client</a>
+    </p>
+
+{% endblock %}

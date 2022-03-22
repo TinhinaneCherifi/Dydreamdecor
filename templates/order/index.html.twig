@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Valider ma commande - Dydream Decor{% endblock %}
+
+{% block content %}
+    <h1>Passer ma commande</h1>
+    <p>Choisissez vos préferences avant de passer votre commande sur Dydream Decor</p>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            {% set formHtml %}
+                {{ form_start(form, {action:path('order_summary')}) }}
+                    {{ form_label(form.addresses, 'Choisir une adresse de livraison') }}
+                    <a href="{{ path('account_address_add') }}">Ajouter une nouvelle adresse</a>
+                {{ form_end(form) }}
+            {% endset %}
+
+            {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
+            <br> 
+            <br>      
+        </div>
+        <div class="col-md-6">
+            <div class="text-center">
+                <b>Récapitulatif de ma commande</b><br>
+            </div>
+            <div class="order-sum-up">
+                {% for key,item in cart %}
+                    <div class="row m-3 {% if key > 0 %} mt-2 {% endif %}">
+                        <div class="col-md-3">
+                            <img src="uploads/item_images/{{ item.item.image }}" alt="{{ item.item.alt }}" width="70vw">
+                        </div>
+                        <div class="col-md-4 my-auto">
+                            {{ item.item.name }}
+                        </div>
+                        <div class="col-md-3 my-auto">
+                            {{ (item.item.price / 100)|number_format(2, ',','.') }} €</td>
+                            x {{ item.quantity }}
+                        </div>
+                        <div class="col-md-2 my-auto">
+                            {{ ((item.item.price * item.quantity)/ 100)|number_format(2, ',','.') }} €</td>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

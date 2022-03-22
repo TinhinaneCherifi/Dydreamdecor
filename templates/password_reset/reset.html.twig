@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réinitialisation du mot de passe - D-Day Decor{% endblock %}
+
+{% block content %}
+<div>
+    <h1 class="h3 mb-3 font-weight-normal">Réinitialiser mon mot de passe</h1>
+    <hr>
+
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+
+    {# {% for message in app.flashes('notice') %}
+        <div class="alert alert-info">{{ message }}</div>
+    {% endfor %} #}
+
+    
+    {{ form(form) }}
+</div>
+
+{% endblock %}

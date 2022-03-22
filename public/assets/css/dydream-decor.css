@@ -1,0 +1,76 @@
+body {
+    position: relative;
+}
+
+#navbar-collapse {
+text-decoration:#ffe0e1;
+}
+
+.product-container {
+    margin-bottom: 125px;
+}
+
+.product {
+    margin-top: 2vh; 
+    /*vh: pourcentage de la hauteur du navigateur (unité responsive contrairement aux pixels*/
+    margin-right: 2vw;
+     /* vw: pourcentage de la largeur du navigateur */
+}
+
+.product-title {
+    text-transform: uppercase;
+    font-size: 17px;
+    margin-top:5px;
+    margin-bottom:1px;
+}
+
+.inspiration-subtitle {
+    font-size: 15px;
+    margin-top:5px;
+    margin-bottom:1px;
+}
+
+.product-index-price {
+    margin-bottom:10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.product-show-price {
+    margin-bottom:10px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.product-description {
+    font-size: 14px;
+}
+
+.footer-custom {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    padding-top: 25px;
+    color:#ffe0e1;
+}
+
+.block-small {
+    max-width: 100px;
+    margin: 0 auto;
+}
+
+.form-check {
+    background-color: #ffe0e1;
+    padding: 20px;
+    margin-top: 8px;
+}
+
+.col-form-label {
+    font-weight: bold;
+}
+
+.order-sum-up {
+    background-color: #ffe0e1;
+    padding: 20px;
+    margin-top: 22px;
+}

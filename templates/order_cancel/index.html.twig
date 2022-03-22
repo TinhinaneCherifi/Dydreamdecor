@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Echec du paiement - Dydream Decor{% endblock %}
+
+{% block content %}
+    <h2>Echec du paiement</h2>
+    <hr>
+    <br>
+    <p>
+        <strong>{{ order.user.fullName }}</strong>, il semblerait que votre paiement ait échoué !
+        <br>
+        Un email vient de vous être envoyé à votre adresse <strong>{{ order.user.email }}</strong>
+        <br>
+        <br>
+        <a href="{{ path('order') }}" class="btn btn-dark">Réessayer</a>
+    </p>
+
+{% endblock %}

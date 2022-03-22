@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes adresses - D-Day Decor{% endblock %}
+
+{% block content %}
+
+<a href="{{ path('account') }}">
+    <img src="{{ asset('assets/icons/arrow-left-square-fill.svg') }}" alt="Retour">
+</a>
+    <h1 class="text-center">Mes adresses</h1>
+    <br>
+    <div class="my-1 text-center">
+        <a class="btn btn-dark btn-sm" href="{{ path('account_address_add') }}">Ajouter une adresse</a>
+    </div>
+    <br>
+    {% if app.user.addresses|length == 0 %}
+        <p class="text-center">Vous n'avez ajouté aucune adresse pour le moment.</p>
+        {% else %}
+            <div class="row">
+                {% for address in app.user.addresses %}
+                    <div class="col-md-5 p-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ address.name }}</h5>
+                                <p class="card-text">
+                                    {{ address.address }}<br>
+                                    {{ address.zip }}<br>
+                                    {{ address.city }}<br>
+                                    {{ address.country }}           
+                                </p>
+                                <a href="{{ path('account_address_edit', { 'id' : address.id }) }}">Modifier</a> | <a href="{{ path('account_address_delete', { 'id' : address.id }) }}">Supprimer</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+    {% endif %}
+{% endblock %}
