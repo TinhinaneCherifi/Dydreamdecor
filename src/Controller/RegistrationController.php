@@ -17,12 +17,12 @@ class RegistrationController extends AbstractController
     #[Route('/inscription', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $user = new User(); // Instenciation de la classe User
+        $form = $this->createForm(RegistrationFormType::class, $user); // On crée le forme en indiquant à la méthode createForm qu"il faut utiliser le modèle RegistrationFormType
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+            // encoder le mot de passe
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
@@ -32,7 +32,7 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            // Send a confirmation email
+            // envoyer un email de confirmation 
                 $mailJet = new MailJet();
                 $subject = 'Confirmation de votre inscription';
                 $title = 'Bienvenue';

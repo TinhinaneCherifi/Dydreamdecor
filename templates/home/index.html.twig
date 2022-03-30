@@ -4,7 +4,6 @@
 
 {% block content %}
 
-    <!-- Three columns of text below the carousel -->
     <h3 class="text-center">Articles les plus populaires</h3>
     <div class="row">
         {% for item in items %}
@@ -12,19 +11,19 @@
                 {% include 'item/one_in_index.html.twig' %}
             </div>
         {% endfor %}
-    </div><!-- /.row -->
+    </div>
     <br>
     <hr>
     <br>
     <h3 class="text-center">Inspirations les plus populaires</h3>
-      <!-- Three columns of text below the carousel -->
+
     <div class="row">
         {% for inspiration in inspirations %}
             <div class="col-md-4">
                 {% include 'inspiration/one_in_index.html.twig' %}
             </div>
         {% endfor %}
-    </div><!-- /.row -->
+    </div>
 
 
     <!-- START THE FEATURETTES -->

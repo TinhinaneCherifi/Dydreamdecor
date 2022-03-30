@@ -2,9 +2,7 @@ body {
     position: relative;
 }
 
-#navbar-collapse {
-text-decoration:#ffe0e1;
-}
+
 
 .product-container {
     margin-bottom: 125px;
@@ -63,6 +61,15 @@ text-decoration:#ffe0e1;
     background-color: #ffe0e1;
     padding: 20px;
     margin-top: 8px;
+    border-radius: 15px;
+}
+
+.form-check input {
+    margin-left: 1px;
+}
+
+.form-check label {
+    margin-left: 20px;
 }
 
 .col-form-label {
@@ -73,4 +80,18 @@ text-decoration:#ffe0e1;
     background-color: #ffe0e1;
     padding: 20px;
     margin-top: 22px;
+}
+
+/* Nav bar styling  */
+.custom-nav-bar ul li a {
+    font-weight: 700;
+    color: #ffe0e1
+}
+.custom-nav-bar a {
+    font-weight: 700;
+    color: #ffe0e1
+}
+
+main {
+    min-height: 90vh;
 }

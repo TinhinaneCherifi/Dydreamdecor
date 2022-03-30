@@ -1405,4 +1405,8 @@ Ex: Item -OneToMany- Category. Si on refuse qu'en supprimant une category ça su
    - Entités et Algorithmes : 
          - Pour les items dispoibles en plusieurs exemplaires : rentrer chaque exemlaire comme un item séparé ? pb le catalogue affichera x fois le même items (pas top). Ou idéalement rentrer un seul exemplaire, ajouter une proprité quantity-in-stock dans l'entité Item pour pouvoir compter combien sont disponibles aux dates demandées.
          - Une seule date et une seule adresse de commande
-   
+   Définitions:
+
+   Doctrine : ORM qui fait la relation entre le PHP et la base de données.
+   Repository : centralise la récupération de données d'une entity
+   Migration : un fichier comptenant des requettes SQL à executer dans la bdd avec deux fonction up (CREATE pour transférer les données en bdd) et down (DROP pour supprimer de la bdd)

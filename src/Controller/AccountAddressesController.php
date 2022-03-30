@@ -23,7 +23,7 @@ class AccountAddressesController extends AbstractController
     #[Route('/compte/adresses', name: 'account_address')]
     public function index(): Response
     {
-        return $this->render('account/address.html.twig');
+        return $this->render('account/addresses.html.twig');
     }
 
     #[Route('/compte/ajouter-adresse', name: 'account_address_add')]

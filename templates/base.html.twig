@@ -3,16 +3,21 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Louez des articles de décoration ou demandez une prestation">
+        <meta name="description" content="Achetez des articles de décoration ou demandez une prestation">
         <meta name="author" content="Tinhinane Cherifi">
         <meta name="generator" content="Jekyll v4.1.1">
         <title>{% block title %}Dydream Decor{% endblock %}</title> <!-- Titre par défaut si aucun titre n'est défini dans les pages qui extends celle-ci -->
 
+
         <!-- Bootstrap core CSS -->
-        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet"> <!-- asset signifie "va chercher dans le dossier public" -->
-        <link href="{{ asset('assets/css/dydream-decor.css') }}" rel="stylesheet" >
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <!-- Material Icons-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
         {% block javascript %}
         {% endblock %}
+        
         <style>
             .bd-placeholder-img {
                 font-size: 1.125rem;
@@ -31,6 +36,10 @@
         </style>
         <!-- Custom styles for this template -->
         <link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
+        <!-- This is a comment-->
+        <link href="{{ asset('assets/css/dydream-decor.css') }}" rel="stylesheet" >
+
+          
     </head>
 
     <body>
@@ -38,12 +47,14 @@
             <nav class="navbar navbar-expand-md fixed-top " style="background-color: #aec3b8;">
                 <a class="navbar-brand p-0" href="{{ path('home') }}"><img height='60px' src="{{ asset('logo/logo.png') }}" alt="Logo Dydream Decor avec cercle doré avec lettres DDD sur fond rose clair"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                        <span>
+                            <img src="{{ asset('assets/icons/burger.svg') }}" alt="Panier">
+                        </span>
                 </button>
-                <div class="navbar-item-custom collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-item-custom collapse navbar-collapse custom-nav-bar" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('items') }}">Nos Articles</a>
+                            <a id="navbar_link" class="nav-link" href="{{ path('items') }}">Nos Articles</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ path('inspirations') }}">Nos inspirations</a>
@@ -52,53 +63,53 @@
                             <a class="nav-link" href="#">Nous contacter</a>
                         </li>
                     </ul>
-                    <div>
-                        <a href="{{ path('cart') }}" class="mr=3">
-                            <img src="{{ asset('assets/icons/cart3.svg') }}" alt="Panier">
-                        </a>
-                    </div>
                     <hr>
                     <div>{% if app.user %}
-                            <a href="{{ path('account') }}">{{ app.user.fullName }}</a> | <a href={{ path('app_logout') }}>Déconnexion</a>
+                        <a href="{{ path('account') }}">{{ app.user.fullName }}</a> <span style="color: #ffe0e1;"> | </span> <a href={{ path('app_logout') }}>Déconnexion</a>
                         {% else %}
-                            <a href="{{ path('app_login') }}">Connexion</a> | <a href="{{ path('app_register') }}">Inscription</a>
+                        <a href="{{ path('app_login') }}">Connexion</a> <span style="color: #ffe0e1;"> | </span> <a href="{{ path('app_register') }}">Inscription</a>
                         {% endif %}
+                    </div>
+                    <div>
+                        <a href="{{ path('cart') }}" class="ml-2 mb-1">
+                            <img src="{{ asset('assets/icons/cart3.svg') }}" alt="Panier">
+                        </a>
                     </div>
                 </div>
             </nav>
         </header>
 
-        <main role="main">
+        <main class="pb-4" role="main">
 
-            {% if block("carousel") is defined %} <!-- Carousel block only displays when defined (called)-->
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    {% for key, header in headers %}
-                        <li data-target="#myCarousel" data-slide-to="{{ key }}" {% if key == 0 %} class="active" {% endif %}></li>
-                    {% endfor %}    
-                </ol>
-                <div class="carousel-inner">
-                    {% for key, header in headers %}
-                        <div class="carousel-item {% if key == 0 %} active {% endif %}" style="background: url('/uploads/header_images/{{ header.image }}'); background-size:cover; background-position:center">
-                            <div class="container">
-                                <div class="carousel-caption">
-                                    <h1>{{ header.title }}</h1>
-                                    <p>{{ header.text }}</p>
-                                    <p><a class="btn btn-sl btn-info" href="{{ header.btnUrl }}" role="button">{{ header.btnTitle }}</a></p>
+            {% if block("carousel") is defined %} <!-- le carousel ne s'affiche que sur les page où un block carousel est défini-->
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        {% for key, header in headers %}
+                            <li data-target="#myCarousel" data-slide-to="{{ key }}" {% if key == 0 %} class="active" {% endif %}></li>
+                        {% endfor %}    
+                    </ol>
+                    <div class="carousel-inner">
+                        {% for key, header in headers %}
+                            <div class="carousel-item {% if key == 0 %} active {% endif %}" style="background: url('/uploads/header_images/{{ header.image }}'); background-size:cover; background-position:center">
+                                <div class="container">
+                                    <div class="carousel-caption">
+                                        <h1>{{ header.title }}</h1>
+                                        <p>{{ header.text }}</p>
+                                        <p><a class="btn btn-sl btn-info" href="{{ header.btnUrl }}" role="button">{{ header.btnTitle }}</a></p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
             {% endif %}
 
 
@@ -106,13 +117,13 @@
             ================================================== -->
             <!-- Wrap the rest of the page in another container to center all the content. -->
 
-            <div class="container marketing {% if block("carousel") is not defined %}mt-5{% endif %}">
+            <div class="container marketing {% if block("carousel") is not defined %}mt-5{% endif %}"> <!-- Si le block crousel n'est pas définit ajouter une marge -->
 
                 {% block content %}
                 {% endblock %}
 
             </div><!-- /.container -->
-
+        </main>
             <!-- FOOTER -->
             <footer class="bg-dark footer-custom">
                 <div>
@@ -124,9 +135,8 @@
                     <small>&copy; 2017-2022 - D-Day Decor - Mon slogan </small><br>
                 </p>
             </footer>
-        </main>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="{{asset('assets/js/bootstrap.bundle.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
     </body>
     {% block script %}
     {% endblock %}

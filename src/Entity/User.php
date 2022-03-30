@@ -13,18 +13,18 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface // une interface est un schéma que la classe qui y fait appel doit respecter
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    #[ORM\Column(type: 'string', length: 180, unique: true)]// on dit à l'ORM que la propriété email est unique. 
     private $email;
 
     #[ORM\Column(type: 'json')]
-    private $roles = [];
+    private $roles = []; // Voir access_control dans sécurity.yaml où les rôles sont définis.
 
     #[ORM\Column(type: 'string')]
     private $password;

@@ -14,21 +14,21 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Router\CrudUrlGenerator;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class OrderCrudController extends AbstractCrudController
 {
     private $entityManager;
-    private $crudUrlGenerator;
+    private $adminUrlGenerator;
 
-    public function __construct(EntityManagerInterface $entityManager, CrudUrlGenerator $crudUrlGenerator)
+
+    public function __construct(EntityManagerInterface $entityManager, AdminUrlGenerator $adminUrlGenerator)
     {
         $this->entityManager = $entityManager;
-        $this->crudUrlGenerator = $crudUrlGenerator;
+        $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
     public static function getEntityFqcn(): string
@@ -58,7 +58,7 @@ class OrderCrudController extends AbstractCrudController
         
         $user = $order->getUser(); //ajouté pour l'envoi de mail
 
-        $url = $this->crudUrlGenerator->build()
+        $url = $this->adminUrlGenerator
             ->setController(OrderCrudController::class)
             ->setAction(Action::INDEX)
             ->generateUrl();
@@ -82,7 +82,7 @@ class OrderCrudController extends AbstractCrudController
 
         $user = $order->getUser(); //ajouté pour l'envoi de mail
         
-        $url = $this->crudUrlGenerator->build()
+        $url = $this->adminUrlGenerator
             ->setController(OrderCrudController::class)
             ->setAction(Action::INDEX)
             ->generateUrl();
@@ -104,9 +104,9 @@ class OrderCrudController extends AbstractCrudController
         $order->setStatus(4);
         $this->entityManager->flush();
 
-        $user = $order->getUser(); //ajouté pour l'envoi de mail
+        $user = $order->getUser(); //added for email purpose 
         
-        $url = $this->crudUrlGenerator->build()
+        $url = $this->adminUrlGenerator
             ->setController(OrderCrudController::class)
             ->setAction(Action::INDEX)
             ->generateUrl();
@@ -119,7 +119,7 @@ class OrderCrudController extends AbstractCrudController
         $button = 'Confirmez la reception';
         $mailJet->send($user->getEmail(),$user->getFirstname(), $subject, $title, $content, $button);
 
-        return $this->redirect($url); //problème avec la redirection
+        return $this->redirect($url);
     }
 
 
