@@ -43,19 +43,23 @@ class PasswordResetController extends AbstractController
                 $this->entityManager->flush();
                 
                 //Send the user an email with a password reset link/button
-                $url = $this->generateUrl('password_reset', [
+                $webSiteUrl = 'https://projet.tinhinane-cherifi.fr';
+                //$webSiteUrl = 'http://127.0.0.1:8000';
+                $urlEnding = $this->generateUrl('password_reset', [
                     'token' => $passwordReset->getToken()
                 ]);
-
+               
+                $url = $webSiteUrl.$urlEnding;
+                
                 $mailJet = new MailJet();
                 $subject = 'Réinitialisation de votre mot de passe sur DDD';
                 $title = 'Vous avez demandé à réinitialiser votre mot de passe ?';
-                $content = 'Bonjour '.$user->getFirstname().', vous avez oublié votre mot de passe ? Pas de panique. Pour retrouver l\'accès à votre compte cliquez sur Réinitialiser.';
+                $content = 'Bonjour '.$user->getFirstname().', vous avez oublié votre mot de passe ? Pas de panique. Pour retrouver l\'accès à votre compte, cliquez sur Réinitialiser';
                 $button = '<a href="'.$url.'">Réinitialiser</a>';
-                $mailJet->send($user->getEmail(),$user->getFullName(), $subject, $title, $content, $button);
+                $mailJet->send($user->getEmail(),$user->getFullName(), $subject, $title, $content,$button);
                 $this ->addFlash('notice', 'Un email contenant un lien de réinitialisation vient de vous être envoyé. Consultez votre boite mail.');        
             }else{
-                $this ->addFlash('notice', 'Adresse inconnue.');
+                $this ->addFlash('notice', 'Adresse email inconnue.');
             }  
         }
         return $this->render('password_reset/forgotten.html.twig');
