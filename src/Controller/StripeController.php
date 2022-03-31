@@ -19,7 +19,8 @@ class StripeController extends AbstractController
     public function index(EntityManagerInterface $entityManager, Cart $cart, $ref): Response
     {
         $stripeItems = [];
-        $YOUR_DOMAIN = 'http://127.0.0.1:8000';
+        // $YOUR_DOMAIN = 'http://127.0.0.1:8000';
+        $YOUR_DOMAIN = 'http://projet.tinhinane-cherifi.fr';
 
         $order = $entityManager->getRepository(Order::class)->findOneByRef($ref);
         
