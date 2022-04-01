@@ -23,7 +23,6 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->addFlash('notice', 'Merci de nous avoir contactés. L\'équipe Dydream Decor vous répondra dans les meilleurs délais.');
             $entityManager->persist($contact);
             $entityManager->flush();
 
