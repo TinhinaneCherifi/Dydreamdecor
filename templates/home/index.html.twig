@@ -4,68 +4,68 @@
 
 {% block content %}
 
-    <h3 class="text-center">Articles les plus populaires</h3>
-    <div class="row">
-        {% for item in items %}
-            <div class="col-md-4">
-                {% include 'item/one_in_index.html.twig' %}
+    <main>
+
+        <h3 class="text-center">Articles les plus populaires</h3>
+        <div class="row">
+            {% for item in items %}
+                <div class="col-md-4">
+                    {% include 'item/one_in_index.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+        <br>
+        <hr>
+        <br>
+        <h3 class="text-center">Inspirations les plus populaires</h3>
+
+        <div class="row">
+            {% for inspiration in inspirations %}
+                <div class="col-md-4">
+                    {% include 'inspiration/one_in_index.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Une professionnelle passionnée. <span class="text-muted">Un don hors du commun.</span></h2>
+                <p 
+                    class="lead">Andy, non pas Andy Warhol, Andy Geslin, une décoratrice d'exception. Sa passion se traduit dans les décors de rêve qu'elle crée. Faites-lui confiance et vos convives seront époustouflés ! Nul doute, ils en garderont un merveilleux souvenir et vous aussi ! Consultez notre catalogue d'inspirations et demandez un devis.
+                    <br>
+                    <button class="btn btn-dark"><a href="{{ path('inspirations') }}">Nos inspirations</a></button>
+                </p>
             </div>
-        {% endfor %}
-    </div>
-    <br>
-    <hr>
-    <br>
-    <h3 class="text-center">Inspirations les plus populaires</h3>
-
-    <div class="row">
-        {% for inspiration in inspirations %}
-            <div class="col-md-4">
-                {% include 'inspiration/one_in_index.html.twig' %}
+            <div class="col-md-5">
+                <img src="{{ asset('assets/hard-coded-images/decorator.png') }}" class="img-fluid bd-placeholder-img rounded" alt="Femme décorant une arche florale">
             </div>
-        {% endfor %}
-    </div>
-
-
-    <!-- START THE FEATURETTES -->
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
-        <div class="col-md-5">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Nous vous attendons. <span class="text-muted">Livraison ou Click &amp; Collect, à vous de choisir</span></h2>
+                <p 
+                    class="lead">Commandez en ligne, puis choisissez de vous faire livrer par nos soins ou de venir chercher vos articles chez nous au 34 rue des Brigadières 95870 à Bezons. Quelle que soit l'option choisie, nous restons à votre service.
+                    <br>
+                    <button class="btn btn-dark"><a href="{{ path('items') }}">Notre catalogue</a></button>
+                </p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img src="{{ asset('assets/hard-coded-images/open.png') }}" class="img-fluid bd-placeholder-img rounded" alt="Porte bleue avec panneau open">
+            </div>
         </div>
-    </div>
 
-    <hr class="featurette-divider">
+        <hr class="featurette-divider">
 
-    <div class="row featurette">
-        <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5 order-md-1">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-        </div>
-    </div>
+        <!-- /END THE FEATURETTES -->
 
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-        </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <!-- /END THE FEATURETTES -->
+    </main>
 
 {% endblock %}
