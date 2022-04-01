@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon compte - D-Day Decor{% endblock %}
+{% block title %}Mon compte - Dydream Decor{% endblock %}
 
 {% block content %}
     <h1 class="text-center">Mon compte</h1>
@@ -9,7 +9,7 @@
    <br>
    <br>
    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('admin') }}">Acceder au backoffice</a><br>
+        <a href="{{ path('admin') }}">Accéder au backoffice</a><br>
         <a href="{{ path('account_password') }}">Modifier mon mot de passe</a><br>
    {% elseif is_granted('ROLE_USER') %}
         <a href="{{ path('account_address') }}">Gérer mes adresses</a><br>
