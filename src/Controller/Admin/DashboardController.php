@@ -6,6 +6,7 @@ use App\Entity\Item;
 use App\Entity\User;
 use App\Entity\Order;
 use App\Entity\Carrier;
+use App\Entity\Contact;
 use App\Entity\Header;
 use App\Entity\TodoList;
 use App\Entity\Inspiration;
@@ -48,5 +49,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Transporteurs', 'fas fa-truck', Carrier::class);
         yield MenuItem::linkToCrud('Commandes', 'fas fa-shopping-cart', Order::class);
         yield MenuItem::linkToCrud('Entêtes', 'fas fa-pager', Header::class);
+        yield MenuItem::linkToCrud('Messages', 'fas fa-envelope', Contact::class);
+
     }
 }
