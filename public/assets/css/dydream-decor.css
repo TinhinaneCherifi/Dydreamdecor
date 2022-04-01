@@ -2,8 +2,6 @@ body {
     position: relative;
 }
 
-
-
 .product-container {
     margin-bottom: 125px;
 }
@@ -44,12 +42,11 @@ body {
     font-size: 14px;
 }
 
-.footer-custom {
+.footer-custom a {
     text-align: center;
     position: absolute;
     width: 100%;
     padding-top: 25px;
-    color:#ffe0e1;
 }
 
 .block-small {
